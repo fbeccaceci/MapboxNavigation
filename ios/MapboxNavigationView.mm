@@ -1,10 +1,10 @@
 #ifdef RCT_NEW_ARCH_ENABLED
 #import "MapboxNavigationView.h"
 
-#import <react/renderer/components/RNMapboxNavigationViewSpec/ComponentDescriptors.h>
-#import <react/renderer/components/RNMapboxNavigationViewSpec/EventEmitters.h>
-#import <react/renderer/components/RNMapboxNavigationViewSpec/Props.h>
-#import <react/renderer/components/RNMapboxNavigationViewSpec/RCTComponentViewHelpers.h>
+#import "generated/RNMapboxNavigationViewSpec/ComponentDescriptors.h"
+#import "generated/RNMapboxNavigationViewSpec/EventEmitters.h"
+#import "generated/RNMapboxNavigationViewSpec/Props.h"
+#import "generated/RNMapboxNavigationViewSpec/RCTComponentViewHelpers.h"
 
 #import "RCTFabricComponentsPlugins.h"
 #import "Utils.h"
