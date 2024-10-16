@@ -6,6 +6,8 @@
 #import "generated/RNMapboxNavigationViewSpec/Props.h"
 #import "generated/RNMapboxNavigationViewSpec/RCTComponentViewHelpers.h"
 
+#import <MapboxNavigation-Swift.h>
+
 #import "RCTFabricComponentsPlugins.h"
 #import "Utils.h"
 
@@ -16,7 +18,7 @@ using namespace facebook::react;
 @end
 
 @implementation MapboxNavigationView {
-    UIView * _view;
+  MapboxNavigationViewContent * _view;
 }
 
 + (ComponentDescriptorProvider)componentDescriptorProvider
@@ -30,7 +32,7 @@ using namespace facebook::react;
     static const auto defaultProps = std::make_shared<const MapboxNavigationViewProps>();
     _props = defaultProps;
 
-    _view = [[UIView alloc] init];
+    _view = [[MapboxNavigationViewContent alloc] init];
 
     self.contentView = _view;
   }

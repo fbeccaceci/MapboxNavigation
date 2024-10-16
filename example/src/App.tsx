@@ -1,10 +1,22 @@
-import { StyleSheet, View } from 'react-native';
+import { Button, StyleSheet, View } from 'react-native';
 import { MapboxNavigationView } from 'react-native-mapbox-navigation';
 
+import { MathModule } from 'react-native-mapbox-navigation';
+
 export default function App() {
+  const doStuff = () => {
+    const result = MathModule.add(1, 2);
+
+    console.log('Result: ' + result);
+  };
+
   return (
     <View style={styles.container}>
-      <MapboxNavigationView color="#32a852" style={styles.box} />
+      <View style={styles.content}>
+        <MapboxNavigationView color="#32a852" style={styles.box} />
+
+        <Button title="Test nitro module" onPress={doStuff} />
+      </View>
     </View>
   );
 }
@@ -15,9 +27,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  content: {
+    width: '100%',
+    alignItems: 'center',
+    gap: 20,
+  },
   box: {
-    width: 60,
-    height: 60,
-    marginVertical: 20,
+    width: '100%',
+    aspectRatio: 0.7,
   },
 });

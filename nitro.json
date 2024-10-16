@@ -1,0 +1,16 @@
+{
+  "cxxNamespace": ["iplastudio","mapboxnavigation"],
+  "ios": {
+    "iosModulename": "MapboxNavigation"
+  },
+  "android": {
+    "androidNamespace": ["iplastudio", "mapboxnavigation"],
+    "androidCxxLibName": "MapboxNavigation"
+  },
+  "autolinking": {
+    "Math": {
+      "swift": "HybridMath",
+      "kotlin": "HybridMath"
+    }
+  }
+}
