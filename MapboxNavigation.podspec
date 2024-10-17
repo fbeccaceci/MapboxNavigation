@@ -4,7 +4,7 @@ package = JSON.parse(File.read(File.join(__dir__, "package.json")))
 folly_compiler_flags = '-DFOLLY_NO_CONFIG -DFOLLY_MOBILE=1 -DFOLLY_USE_LIBCPP=1 -Wno-comma -Wno-shorten-64-to-32'
 
 Pod::Spec.new do |s|
-  s.name         = "react-native-mapbox-navigation"
+  s.name         = "MapboxNavigation"
   s.version      = package["version"]
   s.summary      = package["description"]
   s.homepage     = package["homepage"]
@@ -14,7 +14,34 @@ Pod::Spec.new do |s|
   s.platforms    = { :ios => min_ios_version_supported }
   s.source       = { :git => "https://github.com/fbeccaceci/react-native-mapbox-navigation.git", :tag => "#{s.version}" }
 
-  s.source_files = "ios/**/*.{h,m,mm,cpp}"
+  # Mapbox Navigation Sdk
+  s.vendored_frameworks = [
+    "ios/Frameworks/_MapboxNavigationHelpers.xcframework",
+    "ios/Frameworks/MapboxCommon.xcframework",
+    "ios/Frameworks/MapboxCoreMaps.xcframework",
+    "ios/Frameworks/MapboxDirections.xcframework",
+    "ios/Frameworks/MapboxMaps.xcframework",
+    "ios/Frameworks/MapboxNavigationCore.xcframework",
+    "ios/Frameworks/MapboxNavigationNative.xcframework",
+    "ios/Frameworks/MapboxNavigationUIKit.xcframework",
+    "ios/Frameworks/Turf.xcframework"
+  ]
+
+  s.exclude_files = ["ios/Frameworks/*.xcframework/**/*.h"]
+
+  s.source_files = [
+    "ios/**/*.{h,m,mm,cpp,swift}",
+    # Implementation (Swift)
+    "ios/**/*.{swift}",
+    # Autolinking/Registration (Objective-C++)
+    "ios/**/*.{m,mm}",
+    # Implementation (C++ objects)
+    "cpp/**/*.{hpp,cpp}",
+  ]
+
+  s.pod_target_xcconfig    = {
+    "DEFINES_MODULE" => "YES"
+  }
 
   # Use install_modules_dependencies helper to install the dependencies if React Native version >=0.71.0.
   # See https://github.com/facebook/react-native/blob/febf6b7f33fdb4904669f99d795eba4c0f95d7bf/scripts/cocoapods/new_architecture.rb#L79.
@@ -39,4 +66,9 @@ Pod::Spec.new do |s|
       s.dependency "ReactCommon/turbomodule/core"
     end
   end
+
+  # Nitro module configuration
+  load 'nitrogen/generated/ios/MapboxNavigation+autolinking.rb'
+  add_nitrogen_files(s)
+
 end
