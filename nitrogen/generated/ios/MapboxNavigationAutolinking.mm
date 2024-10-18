@@ -11,6 +11,7 @@
 #import <type_traits>
 
 #include "HybridMathSpecSwift.hpp"
+#include "HybridNitroMapboxNavigationViewManagerRegistrySpecSwift.hpp"
 
 @interface MapboxNavigationAutolinking : NSObject
 @end
@@ -26,6 +27,13 @@
     []() -> std::shared_ptr<HybridObject> {
       auto swiftPart = MapboxNavigation::MapboxNavigationAutolinking::createMath();
       return std::make_shared<HybridMathSpecSwift>(swiftPart);
+    }
+  );
+  HybridObjectRegistry::registerHybridObjectConstructor(
+    "NitroMapboxNavigationViewManagerRegistry",
+    []() -> std::shared_ptr<HybridObject> {
+      auto swiftPart = MapboxNavigation::MapboxNavigationAutolinking::createNitroMapboxNavigationViewManagerRegistry();
+      return std::make_shared<HybridNitroMapboxNavigationViewManagerRegistrySpecSwift>(swiftPart);
     }
   );
 }

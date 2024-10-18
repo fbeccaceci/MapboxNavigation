@@ -40,7 +40,8 @@ Pod::Spec.new do |s|
   ]
 
   s.pod_target_xcconfig    = {
-    "DEFINES_MODULE" => "YES"
+    "DEFINES_MODULE" => "YES",
+    "OTHER_CPLUSPLUSFLAGS" => "-DRCT_NEW_ARCH_ENABLED=1"
   }
 
   # Use install_modules_dependencies helper to install the dependencies if React Native version >=0.71.0.

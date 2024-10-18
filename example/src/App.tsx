@@ -1,19 +1,20 @@
+import { useRef } from 'react';
 import { Button, StyleSheet, View } from 'react-native';
 import { MapboxNavigationView } from 'react-native-mapbox-navigation';
 
-import { MathModule } from 'react-native-mapbox-navigation';
+import { MapboxNavigationViewRef } from '../../src/MapboxNavigationView';
 
 export default function App() {
-  const doStuff = () => {
-    const result = MathModule.add(1, 2);
+  const mapRef = useRef<MapboxNavigationViewRef>(null);
 
-    console.log('Result: ' + result);
+  const doStuff = () => {
+    mapRef.current?.randomTestFunction().then(() => console.log('Done'));
   };
 
   return (
     <View style={styles.container}>
       <View style={styles.content}>
-        <MapboxNavigationView color="#32a852" style={styles.box} />
+        <MapboxNavigationView ref={mapRef} style={styles.box} />
 
         <Button title="Test nitro module" onPress={doStuff} />
       </View>

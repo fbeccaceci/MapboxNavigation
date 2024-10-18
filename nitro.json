@@ -11,6 +11,10 @@
     "Math": {
       "swift": "HybridMath",
       "kotlin": "HybridMath"
+    },
+    "NitroMapboxNavigationViewManagerRegistry": {
+      "swift": "HybridNitroMapboxNavigationViewManagerRegistry",
+      "kotlin": "HybridNitroMapboxNavigationViewManagerRegistry"
     }
   }
 }

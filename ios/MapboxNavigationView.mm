@@ -6,8 +6,7 @@
 #import "generated/RNMapboxNavigationViewSpec/Props.h"
 #import "generated/RNMapboxNavigationViewSpec/RCTComponentViewHelpers.h"
 
-#import <NitroModules/HybridContext.hpp>
-#import <MapboxNavigation-Swift.h>
+#import "SwiftToObjcBridgingHeader.h"
 
 #import "RCTFabricComponentsPlugins.h"
 #import "Utils.h"
@@ -24,7 +23,7 @@ using namespace facebook::react;
 
 + (ComponentDescriptorProvider)componentDescriptorProvider
 {
-    return concreteComponentDescriptorProvider<MapboxNavigationViewComponentDescriptor>();
+  return concreteComponentDescriptorProvider<MapboxNavigationViewComponentDescriptor>();
 }
 
 - (instancetype)initWithFrame:(CGRect)frame
@@ -32,31 +31,39 @@ using namespace facebook::react;
   if (self = [super initWithFrame:frame]) {
     static const auto defaultProps = std::make_shared<const MapboxNavigationViewProps>();
     _props = defaultProps;
+    
+    NSLog(@"Running on: %@", [NSThread isMainThread] ? @"Main Thread" : @"Background Thread");
 
     _view = [[MapboxNavigationViewContent alloc] init];
-
+    
     self.contentView = _view;
   }
-
+  
   return self;
 }
 
 - (void)updateProps:(Props::Shared const &)props oldProps:(Props::Shared const &)oldProps
 {
-    const auto &oldViewProps = *std::static_pointer_cast<MapboxNavigationViewProps const>(_props);
-    const auto &newViewProps = *std::static_pointer_cast<MapboxNavigationViewProps const>(props);
+  const auto &oldViewProps = *std::static_pointer_cast<MapboxNavigationViewProps const>(_props);
+  const auto &newViewProps = *std::static_pointer_cast<MapboxNavigationViewProps const>(props);
+    
+  if (oldProps == nullptr) {
+    NSNumber *nsNitroId = [NSNumber numberWithDouble:newViewProps.nitroId];
+    [self setNitroId:nsNitroId ];
+  }
+  
+  [super updateProps:props oldProps:oldProps];
+}
 
-//    if (oldViewProps.color != newViewProps.color) {
-//        NSString * colorToConvert = [[NSString alloc] initWithUTF8String: newViewProps.color.c_str()];
-//        [_view setBackgroundColor: [Utils hexStringToColor:colorToConvert]];
-//    }
-
-    [super updateProps:props oldProps:oldProps];
+// Override `nitroId` setter to throw `self` into global map
+- (void)setNitroId:(NSNumber*)nitroId {
+  NSLog(@"adding view to map");
+  [MapboxNavigationContentRegistry.globalViewsMap setObject:_view forKey:nitroId];
 }
 
 Class<RCTComponentViewProtocol> MapboxNavigationViewCls(void)
 {
-    return MapboxNavigationView.class;
+  return MapboxNavigationView.class;
 }
 
 @end

@@ -7,6 +7,7 @@
 
 import UIKit
 import MapboxNavigationCore
+import MapboxMaps
 import Combine
 
 @objc public class MapboxNavigationViewContent: UIView {
@@ -16,6 +17,8 @@ import Combine
 
   public override init(frame: CGRect) {
     super.init(frame: frame)
+    
+    print("Swift Running on: \(Thread.isMainThread ? "Main Thread" : "Background Thread")")
   
     setupNavigationMapView()
   }
@@ -35,6 +38,18 @@ import Combine
       navigationMapView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
       navigationMapView.leftAnchor.constraint(equalTo: self.leftAnchor)
     ])
+  }
+  
+  public func randomTestFunction(completion: AnimationCompletion?) {    
+    let camera = self.navigationMapView.mapView.camera
+    
+    let cameraOptions = CameraOptions(center: .init(latitude: 10, longitude: 10))
+    
+    camera?.ease(to: cameraOptions, duration: 1, completion: completion)
+  }
+  
+  public func testSetBackgroundColor() {
+    self.backgroundColor = .blue
   }
 
 }
