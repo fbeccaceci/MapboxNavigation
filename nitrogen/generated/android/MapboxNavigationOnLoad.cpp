@@ -12,8 +12,7 @@
 #include <NitroModules/HybridObjectRegistry.hpp>
 
 #include "JHybridMapboxNavigationViewManagerSpec.hpp"
-#include "JHybridMathSpec.hpp"
-#include "JHybridNitroMapboxNavigationViewManagerRegistrySpec.hpp"
+#include "JHybridMapboxNavigationViewManagerRegistrySpec.hpp"
 #include <NitroModules/JNISharedPtr.hpp>
 
 namespace margelo::nitro::iplastudio::mapboxnavigation {
@@ -26,40 +25,23 @@ int initialize(JavaVM* vm) {
   return facebook::jni::initialize(vm, [] {
     // Register native JNI methods
     margelo::nitro::iplastudio::mapboxnavigation::JHybridMapboxNavigationViewManagerSpec::registerNatives();
-    margelo::nitro::iplastudio::mapboxnavigation::JHybridMathSpec::registerNatives();
-    margelo::nitro::iplastudio::mapboxnavigation::JHybridNitroMapboxNavigationViewManagerRegistrySpec::registerNatives();
+    margelo::nitro::iplastudio::mapboxnavigation::JHybridMapboxNavigationViewManagerRegistrySpec::registerNatives();
 
     // Register Nitro Hybrid Objects
     HybridObjectRegistry::registerHybridObjectConstructor(
-      "Math",
+      "MapboxNavigationViewManagerRegistry",
       []() -> std::shared_ptr<HybridObject> {
-        static auto javaClass = jni::findClassStatic("com/margelo/nitro/iplastudio/mapboxnavigation/HybridMath");
-        static auto defaultConstructor = javaClass->getConstructor<JHybridMathSpec::javaobject()>();
+        static auto javaClass = jni::findClassStatic("com/margelo/nitro/iplastudio/mapboxnavigation/HybridMapboxNavigationViewManagerRegistry");
+        static auto defaultConstructor = javaClass->getConstructor<JHybridMapboxNavigationViewManagerRegistrySpec::javaobject()>();
     
         auto instance = javaClass->newObject(defaultConstructor);
     #ifdef NITRO_DEBUG
         if (instance == nullptr) [[unlikely]] {
-          throw std::runtime_error("Failed to create an instance of \"JHybridMathSpec\" - the constructor returned null!");
+          throw std::runtime_error("Failed to create an instance of \"JHybridMapboxNavigationViewManagerRegistrySpec\" - the constructor returned null!");
         }
     #endif
         auto globalRef = jni::make_global(instance);
-        return JNISharedPtr::make_shared_from_jni<JHybridMathSpec>(globalRef);
-      }
-    );
-    HybridObjectRegistry::registerHybridObjectConstructor(
-      "NitroMapboxNavigationViewManagerRegistry",
-      []() -> std::shared_ptr<HybridObject> {
-        static auto javaClass = jni::findClassStatic("com/margelo/nitro/iplastudio/mapboxnavigation/HybridNitroMapboxNavigationViewManagerRegistry");
-        static auto defaultConstructor = javaClass->getConstructor<JHybridNitroMapboxNavigationViewManagerRegistrySpec::javaobject()>();
-    
-        auto instance = javaClass->newObject(defaultConstructor);
-    #ifdef NITRO_DEBUG
-        if (instance == nullptr) [[unlikely]] {
-          throw std::runtime_error("Failed to create an instance of \"JHybridNitroMapboxNavigationViewManagerRegistrySpec\" - the constructor returned null!");
-        }
-    #endif
-        auto globalRef = jni::make_global(instance);
-        return JNISharedPtr::make_shared_from_jni<JHybridNitroMapboxNavigationViewManagerRegistrySpec>(globalRef);
+        return JNISharedPtr::make_shared_from_jni<JHybridMapboxNavigationViewManagerRegistrySpec>(globalRef);
       }
     );
   });

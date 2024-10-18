@@ -28,12 +28,10 @@ target_sources(
   ../nitrogen/generated/android/MapboxNavigationOnLoad.cpp
   # Shared Nitrogen C++ sources
   ../nitrogen/generated/shared/c++/HybridMapboxNavigationViewManagerSpec.cpp
-  ../nitrogen/generated/shared/c++/HybridMathSpec.cpp
-  ../nitrogen/generated/shared/c++/HybridNitroMapboxNavigationViewManagerRegistrySpec.cpp
+  ../nitrogen/generated/shared/c++/HybridMapboxNavigationViewManagerRegistrySpec.cpp
   # Android-specific Nitrogen C++ sources
   ../nitrogen/generated/android/c++/JHybridMapboxNavigationViewManagerSpec.cpp
-  ../nitrogen/generated/android/c++/JHybridMathSpec.cpp
-  ../nitrogen/generated/android/c++/JHybridNitroMapboxNavigationViewManagerRegistrySpec.cpp
+  ../nitrogen/generated/android/c++/JHybridMapboxNavigationViewManagerRegistrySpec.cpp
 )
 
 # Add all libraries required by the generated specs

@@ -43,7 +43,8 @@
     "clean": "del-cli android/build example/android/build example/android/app/build example/ios/build lib",
     "prepare": "bob build",
     "release": "release-it",
-    "nitrogen": "nitro-codegen"
+    "nitrogen": "nitro-codegen",
+    "generate-nitro-and-pod-install": "nitro-codegen && cd example/ios && RCT_NEW_ARCH_ENABLED=1 bundle exec pod install"
   },
   "keywords": [
     "react-native",

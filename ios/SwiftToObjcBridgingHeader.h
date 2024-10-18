@@ -10,9 +10,7 @@
 
 // This is required because inside MapboxNavigation-Swift.h the nitrmodules HybridContext is used but not imported correctly
 // manual import is needed until a fix comes
-#import <NitroModules/HybridContext.hpp>
-#import <NitroModules/PromiseHolder.hpp>
-#import "MapboxNavigation-Swift-Cxx-Bridge.hpp"
+#import "MapboxNavigation-Swift-Cxx-Umbrella.hpp"
 
 #import <MapboxNavigation-Swift.h>
 

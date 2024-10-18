@@ -8,13 +8,9 @@
     "androidCxxLibName": "MapboxNavigation"
   },
   "autolinking": {
-    "Math": {
-      "swift": "HybridMath",
-      "kotlin": "HybridMath"
-    },
-    "NitroMapboxNavigationViewManagerRegistry": {
-      "swift": "HybridNitroMapboxNavigationViewManagerRegistry",
-      "kotlin": "HybridNitroMapboxNavigationViewManagerRegistry"
+    "MapboxNavigationViewManagerRegistry": {
+      "swift": "HybridMapboxNavigationViewManagerRegistry",
+      "kotlin": "HybridMapboxNavigationViewManagerRegistry"
     }
   }
 }

@@ -8,17 +8,14 @@
 #pragma once
 
 // Forward declarations of C++ defined types
+// Forward declaration of `HybridMapboxNavigationViewManagerRegistrySpec` to properly resolve imports.
+namespace margelo::nitro::iplastudio::mapboxnavigation { class HybridMapboxNavigationViewManagerRegistrySpec; }
 // Forward declaration of `HybridMapboxNavigationViewManagerSpec` to properly resolve imports.
 namespace margelo::nitro::iplastudio::mapboxnavigation { class HybridMapboxNavigationViewManagerSpec; }
-// Forward declaration of `HybridMathSpec` to properly resolve imports.
-namespace margelo::nitro::iplastudio::mapboxnavigation { class HybridMathSpec; }
-// Forward declaration of `HybridNitroMapboxNavigationViewManagerRegistrySpec` to properly resolve imports.
-namespace margelo::nitro::iplastudio::mapboxnavigation { class HybridNitroMapboxNavigationViewManagerRegistrySpec; }
 
 // Include C++ defined types
+#include "HybridMapboxNavigationViewManagerRegistrySpec.hpp"
 #include "HybridMapboxNavigationViewManagerSpec.hpp"
-#include "HybridMathSpec.hpp"
-#include "HybridNitroMapboxNavigationViewManagerRegistrySpec.hpp"
 #include <future>
 #include <memory>
 
@@ -32,12 +29,10 @@ namespace margelo::nitro::iplastudio::mapboxnavigation { class HybridNitroMapbox
 #include <NitroModules/PromiseHolder.hpp>
 
 // Forward declarations of Swift defined types
+// Forward declaration of `HybridMapboxNavigationViewManagerRegistrySpecCxx` to properly resolve imports.
+namespace MapboxNavigation { class HybridMapboxNavigationViewManagerRegistrySpecCxx; }
 // Forward declaration of `HybridMapboxNavigationViewManagerSpecCxx` to properly resolve imports.
 namespace MapboxNavigation { class HybridMapboxNavigationViewManagerSpecCxx; }
-// Forward declaration of `HybridMathSpecCxx` to properly resolve imports.
-namespace MapboxNavigation { class HybridMathSpecCxx; }
-// Forward declaration of `HybridNitroMapboxNavigationViewManagerRegistrySpecCxx` to properly resolve imports.
-namespace MapboxNavigation { class HybridNitroMapboxNavigationViewManagerRegistrySpecCxx; }
 
 // Include Swift defined types
 #if __has_include("MapboxNavigation-Swift.h")

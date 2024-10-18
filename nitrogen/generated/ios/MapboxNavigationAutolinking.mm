@@ -10,8 +10,7 @@
 #import "MapboxNavigation-Swift-Cxx-Umbrella.hpp"
 #import <type_traits>
 
-#include "HybridMathSpecSwift.hpp"
-#include "HybridNitroMapboxNavigationViewManagerRegistrySpecSwift.hpp"
+#include "HybridMapboxNavigationViewManagerRegistrySpecSwift.hpp"
 
 @interface MapboxNavigationAutolinking : NSObject
 @end
@@ -23,17 +22,10 @@
   using namespace margelo::nitro::iplastudio::mapboxnavigation;
 
   HybridObjectRegistry::registerHybridObjectConstructor(
-    "Math",
+    "MapboxNavigationViewManagerRegistry",
     []() -> std::shared_ptr<HybridObject> {
-      auto swiftPart = MapboxNavigation::MapboxNavigationAutolinking::createMath();
-      return std::make_shared<HybridMathSpecSwift>(swiftPart);
-    }
-  );
-  HybridObjectRegistry::registerHybridObjectConstructor(
-    "NitroMapboxNavigationViewManagerRegistry",
-    []() -> std::shared_ptr<HybridObject> {
-      auto swiftPart = MapboxNavigation::MapboxNavigationAutolinking::createNitroMapboxNavigationViewManagerRegistry();
-      return std::make_shared<HybridNitroMapboxNavigationViewManagerRegistrySpecSwift>(swiftPart);
+      auto swiftPart = MapboxNavigation::MapboxNavigationAutolinking::createMapboxNavigationViewManagerRegistry();
+      return std::make_shared<HybridMapboxNavigationViewManagerRegistrySpecSwift>(swiftPart);
     }
   );
 }

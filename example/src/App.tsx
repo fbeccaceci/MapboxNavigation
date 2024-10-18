@@ -1,8 +1,9 @@
 import { useRef } from 'react';
 import { Button, StyleSheet, View } from 'react-native';
-import { MapboxNavigationView } from 'react-native-mapbox-navigation';
-
-import { MapboxNavigationViewRef } from '../../src/MapboxNavigationView';
+import {
+  MapboxNavigationView,
+  MapboxNavigationViewRef,
+} from 'react-native-mapbox-navigation';
 
 export default function App() {
   const mapRef = useRef<MapboxNavigationViewRef>(null);
