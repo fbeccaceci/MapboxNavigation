@@ -11,7 +11,7 @@ Pod::Spec.new do |s|
   s.license      = package["license"]
   s.authors      = package["author"]
 
-  s.platforms    = { :ios => min_ios_version_supported }
+  s.platforms    = { :ios => "14.0" }
   s.source       = { :git => "https://github.com/fbeccaceci/react-native-mapbox-navigation.git", :tag => "#{s.version}" }
 
   # Mapbox Navigation Sdk
@@ -41,7 +41,7 @@ Pod::Spec.new do |s|
 
   s.pod_target_xcconfig    = {
     "DEFINES_MODULE" => "YES",
-    "OTHER_CPLUSPLUSFLAGS" => "-DRCT_NEW_ARCH_ENABLED=1"
+    "OTHER_CPLUSPLUSFLAGS" => "-DRCT_NEW_ARCH_ENABLED=1",
   }
 
   # Use install_modules_dependencies helper to install the dependencies if React Native version >=0.71.0.

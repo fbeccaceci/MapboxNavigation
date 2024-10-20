@@ -8,15 +8,13 @@
 import Foundation
 import NitroModules
 
-@objc public class MapboxNavigationContentRegistry: NSObject {
+class MapboxNavigationContentRegistry: NSObject {
   
-  @objc public static var globalViewsMap = NSMapTable<NSNumber, MapboxNavigationViewContent>.strongToWeakObjects()
+  static var globalViewsMap = NSMapTable<NSNumber, MapboxNavigationViewContent>.strongToWeakObjects()
   
 }
 
 class HybridMapboxNavigationViewManager: NitroViewManager<MapboxNavigationViewContent>, HybridMapboxNavigationViewManagerSpec {
-  
-  @objc public static var globalViewsMap = NSMapTable<NSNumber, MapboxNavigationViewContent>.strongToWeakObjects()
   
   init(withNitroId viewNitroId: Double) {
     super.init(viewNitroId: viewNitroId) { nitroId in
@@ -24,9 +22,9 @@ class HybridMapboxNavigationViewManager: NitroViewManager<MapboxNavigationViewCo
     }
   }
   
-  public var hybridContext = margelo.nitro.HybridContext()
+  var hybridContext = margelo.nitro.HybridContext()
   
-  public var memorySize: Int {
+  var memorySize: Int {
     return getSizeOf(self)
   }
   

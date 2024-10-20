@@ -9,16 +9,19 @@ import UIKit
 import MapboxNavigationCore
 import MapboxMaps
 import Combine
+import CoreLocation
 
-@objc public class MapboxNavigationViewContent: UIView {
-
+class MapboxNavigationViewContent: UIView {
+  
   private let navigationMapView = NavigationMapView(location: PassthroughSubject().eraseToAnyPublisher(),
                                                     routeProgress: PassthroughSubject().eraseToAnyPublisher())
 
+  private let locationManager = CLLocationManager()
+  
   public override init(frame: CGRect) {
     super.init(frame: frame)
     
-    print("Swift Running on: \(Thread.isMainThread ? "Main Thread" : "Background Thread")")
+    locationManager.delegate = self
   
     setupNavigationMapView()
   }
@@ -40,7 +43,7 @@ import Combine
     ])
   }
   
-  public func randomTestFunction(completion: AnimationCompletion?) {    
+  func randomTestFunction(completion: AnimationCompletion?) {
     let camera = self.navigationMapView.mapView.camera
     
     let cameraOptions = CameraOptions(center: .init(latitude: 10, longitude: 10))
@@ -48,8 +51,31 @@ import Combine
     camera?.ease(to: cameraOptions, duration: 1, completion: completion)
   }
   
-  public func testSetBackgroundColor() {
+  func testSetBackgroundColor() {
     self.backgroundColor = .blue
   }
-
+  
 }
+
+extension MapboxNavigationViewContent: CLLocationManagerDelegate {
+  
+  func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+
+    switch manager.authorizationStatus {
+    case .notDetermined:
+      print("Location permission not determined")
+    case .restricted:
+      print("Location permission is restricted")
+    case .denied:
+      print("Location permission denied")
+    case .authorizedAlways:
+      print("Location permission granted for always use")
+    case .authorizedWhenInUse:
+      print("Location permission granted for when-in-use")
+    @unknown default:
+      print("Unknown location permission status")
+    }
+  }
+  
+}
+

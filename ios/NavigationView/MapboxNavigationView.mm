@@ -6,8 +6,7 @@
 #import "../generated/RNMapboxNavigationViewSpec/Props.h"
 #import "../generated/RNMapboxNavigationViewSpec/RCTComponentViewHelpers.h"
 
-
-#import "SwiftToObjcBridgingHeader.h"
+#import "MapboxNavigation-Swift-Cxx-Umbrella.hpp"
 
 #import "RCTFabricComponentsPlugins.h"
 
@@ -18,7 +17,7 @@ using namespace facebook::react;
 @end
 
 @implementation MapboxNavigationView {
-  MapboxNavigationViewContent * _view;
+  MapboxNavigationViewContentWrapper * _view;
 }
 
 + (ComponentDescriptorProvider)componentDescriptorProvider
@@ -34,7 +33,7 @@ using namespace facebook::react;
     
     NSLog(@"Running on: %@", [NSThread isMainThread] ? @"Main Thread" : @"Background Thread");
 
-    _view = [[MapboxNavigationViewContent alloc] init];
+    _view = [[MapboxNavigationViewContentWrapper alloc] init];
     
     self.contentView = _view;
   }
@@ -57,8 +56,7 @@ using namespace facebook::react;
 
 // Override `nitroId` setter to throw `self` into global map
 - (void)setNitroId:(NSNumber*)nitroId {
-  NSLog(@"adding view to map");
-  [MapboxNavigationContentRegistry.globalViewsMap setObject:_view forKey:nitroId];
+  [self->_view setNitroId: nitroId];
 }
 
 Class<RCTComponentViewProtocol> MapboxNavigationViewCls(void)

@@ -1753,7 +1753,7 @@ SPEC CHECKSUMS:
   fmt: 4c2741a687cc09f0634a2e2c72a838b99f1ff120
   glog: 69ef571f3de08433d766d614c73a9838a06bf7eb
   hermes-engine: ea92f60f37dba025e293cbe4b4a548fd26b610a0
-  MapboxNavigation: a24e3a0a5463e5fe000037a91a1f00d4f737aa9a
+  MapboxNavigation: 09f32695b0a063dd130ce715fb81afd67fa0bddc
   NitroModules: e8722903c6ca5c7616f62c0d7a926a903ae75bce
   RCT-Folly: 4464f4d875961fce86008d45f4ecf6cef6de0740
   RCTDeprecation: 726d24248aeab6d7180dac71a936bbca6a994ed1
