@@ -4,6 +4,7 @@ import {
   MapboxNavigationView,
   MapboxNavigationViewRef,
 } from 'react-native-mapbox-navigation';
+import { request, PERMISSIONS } from 'react-native-permissions';
 
 export default function App() {
   const mapRef = useRef<MapboxNavigationViewRef>(null);
@@ -12,12 +13,22 @@ export default function App() {
     mapRef.current?.randomTestFunction().then(() => console.log('Done'));
   };
 
+  const requestPermission = () => {
+    request(PERMISSIONS.IOS.LOCATION_ALWAYS).then((status) => {
+      console.log('JS result: ' + status);
+    });
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.content}>
         <MapboxNavigationView ref={mapRef} style={styles.box} />
 
         <Button title="Test nitro module" onPress={doStuff} />
+        <Button
+          title="Request location permission"
+          onPress={requestPermission}
+        />
       </View>
     </View>
   );

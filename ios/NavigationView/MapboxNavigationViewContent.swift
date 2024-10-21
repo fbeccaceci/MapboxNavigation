@@ -15,13 +15,18 @@ class MapboxNavigationViewContent: UIView {
   
   private let navigationMapView = NavigationMapView(location: PassthroughSubject().eraseToAnyPublisher(),
                                                     routeProgress: PassthroughSubject().eraseToAnyPublisher())
-
-  private let locationManager = CLLocationManager()
   
+  private let locationProvider = {
+    let provider = EmptyUntilLocationPermissionGrantedLocationProvider()
+    provider.configurer = { p in
+      p.options.activityType = .automotiveNavigation
+    }
+  
+    return provider
+  }()
+
   public override init(frame: CGRect) {
     super.init(frame: frame)
-    
-    locationManager.delegate = self
   
     setupNavigationMapView()
   }
@@ -32,6 +37,8 @@ class MapboxNavigationViewContent: UIView {
   
   private func setupNavigationMapView() {
     navigationMapView.translatesAutoresizingMaskIntoConstraints = false
+    
+    navigationMapView.mapView.location.override(provider: locationProvider)
     
     self.addSubview(navigationMapView)
     
@@ -53,28 +60,6 @@ class MapboxNavigationViewContent: UIView {
   
   func testSetBackgroundColor() {
     self.backgroundColor = .blue
-  }
-  
-}
-
-extension MapboxNavigationViewContent: CLLocationManagerDelegate {
-  
-  func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-
-    switch manager.authorizationStatus {
-    case .notDetermined:
-      print("Location permission not determined")
-    case .restricted:
-      print("Location permission is restricted")
-    case .denied:
-      print("Location permission denied")
-    case .authorizedAlways:
-      print("Location permission granted for always use")
-    case .authorizedWhenInUse:
-      print("Location permission granted for when-in-use")
-    @unknown default:
-      print("Unknown location permission status")
-    }
   }
   
 }
