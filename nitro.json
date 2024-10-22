@@ -4,7 +4,7 @@
     "iosModulename": "MapboxNavigation"
   },
   "android": {
-    "androidNamespace": ["iplastudio", "mapboxnavigation"],
+    "androidNamespace": ["com", "mapboxnavigation"],
     "androidCxxLibName": "MapboxNavigation"
   },
   "autolinking": {
