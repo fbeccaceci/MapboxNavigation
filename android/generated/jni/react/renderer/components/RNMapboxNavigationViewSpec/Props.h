@@ -22,6 +22,8 @@ class MapboxNavigationViewProps final : public ViewProps {
 #pragma mark - Props
 
   double nitroId{0.0};
+  std::string styleUrl{};
+  std::string puckType{};
 };
 
 } // namespace facebook::react

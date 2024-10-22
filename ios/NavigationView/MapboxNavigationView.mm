@@ -17,7 +17,7 @@ using namespace facebook::react;
 @end
 
 @implementation MapboxNavigationView {
-  MapboxNavigationViewContentWrapper * _view;
+  MapboxNavigationViewContent * _view;
 }
 
 + (ComponentDescriptorProvider)componentDescriptorProvider
@@ -33,7 +33,7 @@ using namespace facebook::react;
     
     NSLog(@"Running on: %@", [NSThread isMainThread] ? @"Main Thread" : @"Background Thread");
 
-    _view = [[MapboxNavigationViewContentWrapper alloc] init];
+    _view = [[MapboxNavigationViewContent alloc] init];
     
     self.contentView = _view;
   }
@@ -49,6 +49,16 @@ using namespace facebook::react;
   if (oldProps == nullptr) {
     NSNumber *nsNitroId = [NSNumber numberWithDouble:newViewProps.nitroId];
     [self setNitroId:nsNitroId ];
+  }
+  
+  if (oldViewProps.styleUrl != newViewProps.styleUrl) {
+    NSString *nsString = [NSString stringWithUTF8String:newViewProps.styleUrl.c_str()];
+    [self->_view setStyleUrl: nsString];
+  }
+  
+  if (oldViewProps.puckType != newViewProps.puckType) {
+    NSString *nsString = [NSString stringWithUTF8String:newViewProps.puckType.c_str()];
+    [self->_view setPuckType: nsString];
   }
   
   [super updateProps:props oldProps:oldProps];

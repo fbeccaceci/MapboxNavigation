@@ -11,7 +11,7 @@ import MapboxMaps
 import Combine
 import CoreLocation
 
-class MapboxNavigationViewContent: UIView {
+@objc public class MapboxNavigationViewContent: UIView {
   
   private let navigationMapView = NavigationMapView(location: PassthroughSubject().eraseToAnyPublisher(),
                                                     routeProgress: PassthroughSubject().eraseToAnyPublisher())
@@ -50,16 +50,34 @@ class MapboxNavigationViewContent: UIView {
     ])
   }
   
+  @objc public func setNitroId(_ nitroId: NSNumber) {
+    MapboxNavigationContentRegistry.globalViewsMap.setObject(self, forKey: nitroId)
+  }
+  
+  @objc public func setStyleUrl(_ styleUrl: String) {
+    self.navigationMapView.mapView.mapboxMap.styleURI = StyleURI(rawValue: styleUrl)
+  }
+  
+  @objc public func setPuckType(_ type: String) {
+    switch type {
+    case "3d":
+      self.navigationMapView.puckType = .puck3D(.navigationDefault)
+    case "2d":
+      self.navigationMapView.puckType = .puck2D(.makeDefault(showBearing: true))
+      break
+    case "none":
+      self.navigationMapView.puckType = .none
+    default:
+      break
+    }
+  }
+  
   func randomTestFunction(completion: AnimationCompletion?) {
     let camera = self.navigationMapView.mapView.camera
     
     let cameraOptions = CameraOptions(center: .init(latitude: 10, longitude: 10))
     
     camera?.ease(to: cameraOptions, duration: 1, completion: completion)
-  }
-  
-  func testSetBackgroundColor() {
-    self.backgroundColor = .blue
   }
   
 }

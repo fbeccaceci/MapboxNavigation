@@ -44,6 +44,7 @@
     "prepare": "bob build",
     "release": "release-it",
     "nitrogen": "nitro-codegen",
+    "pod-install": "cd example/ios && RCT_NEW_ARCH_ENABLED=1 bundle exec pod install",
     "generate-nitro-and-pod-install": "nitro-codegen && cd example/ios && RCT_NEW_ARCH_ENABLED=1 bundle exec pod install"
   },
   "keywords": [

@@ -42,6 +42,12 @@ Pod::Spec.new do |s|
   s.pod_target_xcconfig    = {
     "DEFINES_MODULE" => "YES",
     "OTHER_CPLUSPLUSFLAGS" => "-DRCT_NEW_ARCH_ENABLED=1",
+
+    # Changes the name of the xcode generated header file used to import Swift into objective-c/cxx.
+    # Doing so we can create another file named MapboxNavigation-Swift.h that will be imported instead of the default one by nitrogen.
+    # This way we can add the required imports before the xcode generated header otherwise the app won't compile due to cxx modules being not enabled 
+    # and xcode generating the bridging header only with module sintax.
+    "SWIFT_OBJC_INTERFACE_HEADER_NAME" => "Generated-MapboxNavigation-Swift.h"
   }
 
   # Use install_modules_dependencies helper to install the dependencies if React Native version >=0.71.0.

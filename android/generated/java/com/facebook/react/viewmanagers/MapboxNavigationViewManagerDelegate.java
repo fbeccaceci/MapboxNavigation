@@ -24,6 +24,12 @@ public class MapboxNavigationViewManagerDelegate<T extends View, U extends BaseV
       case "nitroId":
         mViewManager.setNitroId(view, value == null ? Double.NaN : ((Double) value).doubleValue());
         break;
+      case "styleUrl":
+        mViewManager.setStyleUrl(view, value == null ? null : (String) value);
+        break;
+      case "puckType":
+        mViewManager.setPuckType(view, value == null ? null : (String) value);
+        break;
       default:
         super.setProperty(view, propName, value);
     }
