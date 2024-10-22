@@ -17,12 +17,25 @@ class MapboxNavigationViewManager :
     return MapboxNavigationView(context)
   }
 
-  @ReactProp(name = "color")
-  override fun setColor(view: MapboxNavigationView?, color: String?) {
-    view?.setBackgroundColor(Color.parseColor(color))
-  }
+// Need to check this with old arch
+//  @ReactProp(name = "color")
+//  override fun setColor(view: MapboxNavigationView?, color: String?) {
+//    view?.setBackgroundColor(Color.parseColor(color))
+//  }
 
   companion object {
     const val NAME = "MapboxNavigationView"
+  }
+
+  override fun setNitroId(view: MapboxNavigationView?, value: Double) {
+    TODO("Not yet implemented")
+  }
+
+  override fun setStyleUrl(view: MapboxNavigationView?, value: String?) {
+    TODO("Not yet implemented")
+  }
+
+  override fun setPuckType(view: MapboxNavigationView?, value: String?) {
+    TODO("Not yet implemented")
   }
 }
