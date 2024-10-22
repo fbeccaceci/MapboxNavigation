@@ -7,6 +7,13 @@ import com.facebook.react.uimanager.ViewManager
 import java.util.ArrayList
 
 class MapboxNavigationViewPackage : ReactPackage {
+
+  companion object {
+    init {
+        System.loadLibrary("MapboxNavigation")
+    }
+  }
+
   override fun createViewManagers(reactContext: ReactApplicationContext): List<ViewManager<*, *>> {
     val viewManagers: MutableList<ViewManager<*, *>> = ArrayList()
     viewManagers.add(MapboxNavigationViewManager())
