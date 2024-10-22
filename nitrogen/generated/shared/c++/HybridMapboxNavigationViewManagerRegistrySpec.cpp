@@ -7,7 +7,7 @@
 
 #include "HybridMapboxNavigationViewManagerRegistrySpec.hpp"
 
-namespace margelo::nitro::iplastudio::mapboxnavigation {
+namespace margelo::nitro::com::mapboxnavigation {
 
   void HybridMapboxNavigationViewManagerRegistrySpec::loadHybridMethods() {
     // load base methods/properties
@@ -18,4 +18,4 @@ namespace margelo::nitro::iplastudio::mapboxnavigation {
     });
   }
 
-} // namespace margelo::nitro::iplastudio::mapboxnavigation
+} // namespace margelo::nitro::com::mapboxnavigation

@@ -12,7 +12,7 @@
 #include <future>
 #include <NitroModules/JPromise.hpp>
 
-namespace margelo::nitro::iplastudio::mapboxnavigation {
+namespace margelo::nitro::com::mapboxnavigation {
 
   jni::local_ref<JHybridMapboxNavigationViewManagerSpec::jhybriddata> JHybridMapboxNavigationViewManagerSpec::initHybrid(jni::alias_ref<jhybridobject> jThis) {
     return makeCxxInstance(jThis);
@@ -49,4 +49,4 @@ namespace margelo::nitro::iplastudio::mapboxnavigation {
     }();
   }
 
-} // namespace margelo::nitro::iplastudio::mapboxnavigation
+} // namespace margelo::nitro::com::mapboxnavigation

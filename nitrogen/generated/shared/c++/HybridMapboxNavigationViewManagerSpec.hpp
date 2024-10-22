@@ -17,7 +17,7 @@
 
 #include <future>
 
-namespace margelo::nitro::iplastudio::mapboxnavigation {
+namespace margelo::nitro::com::mapboxnavigation {
 
   using namespace margelo::nitro;
 
@@ -59,4 +59,4 @@ namespace margelo::nitro::iplastudio::mapboxnavigation {
       static constexpr auto TAG = "MapboxNavigationViewManager";
   };
 
-} // namespace margelo::nitro::iplastudio::mapboxnavigation
+} // namespace margelo::nitro::com::mapboxnavigation

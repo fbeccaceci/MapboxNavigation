@@ -8,14 +8,14 @@
 #include "JHybridMapboxNavigationViewManagerRegistrySpec.hpp"
 
 // Forward declaration of `HybridMapboxNavigationViewManagerSpec` to properly resolve imports.
-namespace margelo::nitro::iplastudio::mapboxnavigation { class HybridMapboxNavigationViewManagerSpec; }
+namespace margelo::nitro::com::mapboxnavigation { class HybridMapboxNavigationViewManagerSpec; }
 
 #include <memory>
 #include "HybridMapboxNavigationViewManagerSpec.hpp"
 #include "JHybridMapboxNavigationViewManagerSpec.hpp"
 #include <NitroModules/JNISharedPtr.hpp>
 
-namespace margelo::nitro::iplastudio::mapboxnavigation {
+namespace margelo::nitro::com::mapboxnavigation {
 
   jni::local_ref<JHybridMapboxNavigationViewManagerRegistrySpec::jhybriddata> JHybridMapboxNavigationViewManagerRegistrySpec::initHybrid(jni::alias_ref<jhybridobject> jThis) {
     return makeCxxInstance(jThis);
@@ -36,10 +36,10 @@ namespace margelo::nitro::iplastudio::mapboxnavigation {
   
 
   // Methods
-  std::shared_ptr<margelo::nitro::iplastudio::mapboxnavigation::HybridMapboxNavigationViewManagerSpec> JHybridMapboxNavigationViewManagerRegistrySpec::createViewManager(double nitroId) {
+  std::shared_ptr<margelo::nitro::com::mapboxnavigation::HybridMapboxNavigationViewManagerSpec> JHybridMapboxNavigationViewManagerRegistrySpec::createViewManager(double nitroId) {
     static const auto method = _javaPart->getClass()->getMethod<jni::local_ref<JHybridMapboxNavigationViewManagerSpec::javaobject>(double /* nitroId */)>("createViewManager");
     auto result = method(_javaPart, nitroId);
     return JNISharedPtr::make_shared_from_jni<JHybridMapboxNavigationViewManagerSpec>(jni::make_global(result));
   }
 
-} // namespace margelo::nitro::iplastudio::mapboxnavigation
+} // namespace margelo::nitro::com::mapboxnavigation

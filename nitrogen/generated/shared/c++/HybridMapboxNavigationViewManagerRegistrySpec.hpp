@@ -14,12 +14,12 @@
 #endif
 
 // Forward declaration of `HybridMapboxNavigationViewManagerSpec` to properly resolve imports.
-namespace margelo::nitro::iplastudio::mapboxnavigation { class HybridMapboxNavigationViewManagerSpec; }
+namespace margelo::nitro::com::mapboxnavigation { class HybridMapboxNavigationViewManagerSpec; }
 
 #include <memory>
 #include "HybridMapboxNavigationViewManagerSpec.hpp"
 
-namespace margelo::nitro::iplastudio::mapboxnavigation {
+namespace margelo::nitro::com::mapboxnavigation {
 
   using namespace margelo::nitro;
 
@@ -50,7 +50,7 @@ namespace margelo::nitro::iplastudio::mapboxnavigation {
 
     public:
       // Methods
-      virtual std::shared_ptr<margelo::nitro::iplastudio::mapboxnavigation::HybridMapboxNavigationViewManagerSpec> createViewManager(double nitroId) = 0;
+      virtual std::shared_ptr<margelo::nitro::com::mapboxnavigation::HybridMapboxNavigationViewManagerSpec> createViewManager(double nitroId) = 0;
 
     protected:
       // Hybrid Setup
@@ -61,4 +61,4 @@ namespace margelo::nitro::iplastudio::mapboxnavigation {
       static constexpr auto TAG = "MapboxNavigationViewManagerRegistry";
   };
 
-} // namespace margelo::nitro::iplastudio::mapboxnavigation
+} // namespace margelo::nitro::com::mapboxnavigation

@@ -19,11 +19,11 @@ import NitroModules
  */
 public class HybridMapboxNavigationViewManagerSpecCxx {
   /**
-   * The Swift <> C++ bridge's namespace (`margelo::nitro::iplastudio::mapboxnavigation::bridge::swift`)
+   * The Swift <> C++ bridge's namespace (`margelo::nitro::com::mapboxnavigation::bridge::swift`)
    * from `MapboxNavigation-Swift-Cxx-Bridge.hpp`.
    * This contains specialized C++ templates, and C++ helper functions that can be accessed from Swift.
    */
-  public typealias bridge = margelo.nitro.iplastudio.mapboxnavigation.bridge.swift
+  public typealias bridge = margelo.nitro.com.mapboxnavigation.bridge.swift
 
   /**
    * Holds an instance of the `HybridMapboxNavigationViewManagerSpec` Swift protocol.

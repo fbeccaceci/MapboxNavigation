@@ -5,7 +5,7 @@
 /// Copyright © 2024 Marc Rousavy @ Margelo
 ///
 
-package com.margelo.nitro.iplastudio.mapboxnavigation
+package com.margelo.nitro.com.mapboxnavigation
 
 import android.util.Log
 import androidx.annotation.Keep

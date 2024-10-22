@@ -14,14 +14,14 @@
 
 
 
-namespace margelo::nitro::iplastudio::mapboxnavigation {
+namespace margelo::nitro::com::mapboxnavigation {
 
   using namespace facebook;
 
   class JHybridMapboxNavigationViewManagerSpec: public jni::HybridClass<JHybridMapboxNavigationViewManagerSpec, JHybridObject>,
                                                 public virtual HybridMapboxNavigationViewManagerSpec {
   public:
-    static auto constexpr kJavaDescriptor = "Lcom/margelo/nitro/iplastudio/mapboxnavigation/HybridMapboxNavigationViewManagerSpec;";
+    static auto constexpr kJavaDescriptor = "Lcom/margelo/nitro/com/mapboxnavigation/HybridMapboxNavigationViewManagerSpec;";
     static jni::local_ref<jhybriddata> initHybrid(jni::alias_ref<jhybridobject> jThis);
     static void registerNatives();
 
@@ -53,4 +53,4 @@ namespace margelo::nitro::iplastudio::mapboxnavigation {
     jni::global_ref<JHybridMapboxNavigationViewManagerSpec::javaobject> _javaPart;
   };
 
-} // namespace margelo::nitro::iplastudio::mapboxnavigation
+} // namespace margelo::nitro::com::mapboxnavigation

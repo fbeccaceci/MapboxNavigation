@@ -22,7 +22,7 @@
  * Contains specialized versions of C++ templated types so they can be accessed from Swift,
  * as well as helper functions to interact with those C++ types from Swift.
  */
-namespace margelo::nitro::iplastudio::mapboxnavigation::bridge::swift {
+namespace margelo::nitro::com::mapboxnavigation::bridge::swift {
 
   /**
    * Specialized version of `PromiseHolder<void>`.
@@ -32,4 +32,4 @@ namespace margelo::nitro::iplastudio::mapboxnavigation::bridge::swift {
     return PromiseHolder<void>();
   }
 
-} // namespace margelo::nitro::iplastudio::mapboxnavigation::bridge::swift
+} // namespace margelo::nitro::com::mapboxnavigation::bridge::swift

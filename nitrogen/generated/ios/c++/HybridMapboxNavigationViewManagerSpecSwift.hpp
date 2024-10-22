@@ -25,7 +25,7 @@ namespace MapboxNavigation { class HybridMapboxNavigationViewManagerSpecCxx; }
 
 #include "MapboxNavigation-Swift-Cxx-Umbrella.hpp"
 
-namespace margelo::nitro::iplastudio::mapboxnavigation {
+namespace margelo::nitro::com::mapboxnavigation {
 
   /**
    * The C++ part of HybridMapboxNavigationViewManagerSpecCxx.swift.
@@ -69,4 +69,4 @@ namespace margelo::nitro::iplastudio::mapboxnavigation {
     MapboxNavigation::HybridMapboxNavigationViewManagerSpecCxx _swiftPart;
   };
 
-} // namespace margelo::nitro::iplastudio::mapboxnavigation
+} // namespace margelo::nitro::com::mapboxnavigation

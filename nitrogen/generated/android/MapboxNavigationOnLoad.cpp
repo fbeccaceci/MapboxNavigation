@@ -15,23 +15,23 @@
 #include "JHybridMapboxNavigationViewManagerRegistrySpec.hpp"
 #include <NitroModules/JNISharedPtr.hpp>
 
-namespace margelo::nitro::iplastudio::mapboxnavigation {
+namespace margelo::nitro::com::mapboxnavigation {
 
 int initialize(JavaVM* vm) {
   using namespace margelo::nitro;
-  using namespace margelo::nitro::iplastudio::mapboxnavigation;
+  using namespace margelo::nitro::com::mapboxnavigation;
   using namespace facebook;
 
   return facebook::jni::initialize(vm, [] {
     // Register native JNI methods
-    margelo::nitro::iplastudio::mapboxnavigation::JHybridMapboxNavigationViewManagerSpec::registerNatives();
-    margelo::nitro::iplastudio::mapboxnavigation::JHybridMapboxNavigationViewManagerRegistrySpec::registerNatives();
+    margelo::nitro::com::mapboxnavigation::JHybridMapboxNavigationViewManagerSpec::registerNatives();
+    margelo::nitro::com::mapboxnavigation::JHybridMapboxNavigationViewManagerRegistrySpec::registerNatives();
 
     // Register Nitro Hybrid Objects
     HybridObjectRegistry::registerHybridObjectConstructor(
       "MapboxNavigationViewManagerRegistry",
       []() -> std::shared_ptr<HybridObject> {
-        static auto javaClass = jni::findClassStatic("com/margelo/nitro/iplastudio/mapboxnavigation/HybridMapboxNavigationViewManagerRegistry");
+        static auto javaClass = jni::findClassStatic("com/margelo/nitro/com/mapboxnavigation/HybridMapboxNavigationViewManagerRegistry");
         static auto defaultConstructor = javaClass->getConstructor<JHybridMapboxNavigationViewManagerRegistrySpec::javaobject()>();
     
         auto instance = javaClass->newObject(defaultConstructor);
@@ -47,4 +47,4 @@ int initialize(JavaVM* vm) {
   });
 }
 
-} // namespace margelo::nitro::iplastudio::mapboxnavigation
+} // namespace margelo::nitro::com::mapboxnavigation

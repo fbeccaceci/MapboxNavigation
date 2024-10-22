@@ -8,7 +8,7 @@
 #include <jni.h>
 #include <NitroModules/NitroDefines.hpp>
 
-namespace margelo::nitro::iplastudio::mapboxnavigation {
+namespace margelo::nitro::com::mapboxnavigation {
 
   /**
    * Initializes the native (C++) part of MapboxNavigation, and autolinks all Hybrid Objects.
@@ -16,10 +16,10 @@ namespace margelo::nitro::iplastudio::mapboxnavigation {
    * Example:
    * ```cpp (cpp-adapter.cpp)
    * JNIEXPORT jint JNICALL JNI_OnLoad(JavaVM* vm, void*) {
-   *   return margelo::nitro::iplastudio::mapboxnavigation::initialize(vm);
+   *   return margelo::nitro::com::mapboxnavigation::initialize(vm);
    * }
    * ```
    */
   int initialize(JavaVM* vm);
 
-} // namespace margelo::nitro::iplastudio::mapboxnavigation
+} // namespace margelo::nitro::com::mapboxnavigation

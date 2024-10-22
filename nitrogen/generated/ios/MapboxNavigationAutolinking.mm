@@ -19,7 +19,7 @@
 
 + (void) load {
   using namespace margelo::nitro;
-  using namespace margelo::nitro::iplastudio::mapboxnavigation;
+  using namespace margelo::nitro::com::mapboxnavigation;
 
   HybridObjectRegistry::registerHybridObjectConstructor(
     "MapboxNavigationViewManagerRegistry",

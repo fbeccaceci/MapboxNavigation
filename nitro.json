@@ -1,5 +1,5 @@
 {
-  "cxxNamespace": ["iplastudio","mapboxnavigation"],
+  "cxxNamespace": ["com","mapboxnavigation"],
   "ios": {
     "iosModulename": "MapboxNavigation"
   },

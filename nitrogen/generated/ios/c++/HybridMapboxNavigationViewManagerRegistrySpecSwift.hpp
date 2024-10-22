@@ -13,9 +13,9 @@
 namespace MapboxNavigation { class HybridMapboxNavigationViewManagerRegistrySpecCxx; }
 
 // Forward declaration of `HybridMapboxNavigationViewManagerSpec` to properly resolve imports.
-namespace margelo::nitro::iplastudio::mapboxnavigation { class HybridMapboxNavigationViewManagerSpec; }
+namespace margelo::nitro::com::mapboxnavigation { class HybridMapboxNavigationViewManagerSpec; }
 // Forward declaration of `HybridMapboxNavigationViewManagerSpecSwift` to properly resolve imports.
-namespace margelo::nitro::iplastudio::mapboxnavigation { class HybridMapboxNavigationViewManagerSpecSwift; }
+namespace margelo::nitro::com::mapboxnavigation { class HybridMapboxNavigationViewManagerSpecSwift; }
 
 #include <memory>
 #include "HybridMapboxNavigationViewManagerSpec.hpp"
@@ -29,7 +29,7 @@ namespace margelo::nitro::iplastudio::mapboxnavigation { class HybridMapboxNavig
 
 #include "MapboxNavigation-Swift-Cxx-Umbrella.hpp"
 
-namespace margelo::nitro::iplastudio::mapboxnavigation {
+namespace margelo::nitro::com::mapboxnavigation {
 
   /**
    * The C++ part of HybridMapboxNavigationViewManagerRegistrySpecCxx.swift.
@@ -64,7 +64,7 @@ namespace margelo::nitro::iplastudio::mapboxnavigation {
 
   public:
     // Methods
-    inline std::shared_ptr<margelo::nitro::iplastudio::mapboxnavigation::HybridMapboxNavigationViewManagerSpec> createViewManager(double nitroId) override {
+    inline std::shared_ptr<margelo::nitro::com::mapboxnavigation::HybridMapboxNavigationViewManagerSpec> createViewManager(double nitroId) override {
       auto __result = _swiftPart.createViewManager(std::forward<decltype(nitroId)>(nitroId));
       return HybridContext::getOrCreate<HybridMapboxNavigationViewManagerSpecSwift>(__result);
     }
@@ -73,4 +73,4 @@ namespace margelo::nitro::iplastudio::mapboxnavigation {
     MapboxNavigation::HybridMapboxNavigationViewManagerRegistrySpecCxx _swiftPart;
   };
 
-} // namespace margelo::nitro::iplastudio::mapboxnavigation
+} // namespace margelo::nitro::com::mapboxnavigation

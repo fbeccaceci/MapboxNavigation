@@ -7,5 +7,5 @@
 
 #include "HybridMapboxNavigationViewManagerSpecSwift.hpp"
 
-namespace margelo::nitro::iplastudio::mapboxnavigation {
-} // namespace margelo::nitro::iplastudio::mapboxnavigation
+namespace margelo::nitro::com::mapboxnavigation {
+} // namespace margelo::nitro::com::mapboxnavigation

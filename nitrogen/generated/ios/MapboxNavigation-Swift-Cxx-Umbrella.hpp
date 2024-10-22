@@ -9,9 +9,9 @@
 
 // Forward declarations of C++ defined types
 // Forward declaration of `HybridMapboxNavigationViewManagerRegistrySpec` to properly resolve imports.
-namespace margelo::nitro::iplastudio::mapboxnavigation { class HybridMapboxNavigationViewManagerRegistrySpec; }
+namespace margelo::nitro::com::mapboxnavigation { class HybridMapboxNavigationViewManagerRegistrySpec; }
 // Forward declaration of `HybridMapboxNavigationViewManagerSpec` to properly resolve imports.
-namespace margelo::nitro::iplastudio::mapboxnavigation { class HybridMapboxNavigationViewManagerSpec; }
+namespace margelo::nitro::com::mapboxnavigation { class HybridMapboxNavigationViewManagerSpec; }
 
 // Include C++ defined types
 #include "HybridMapboxNavigationViewManagerRegistrySpec.hpp"
