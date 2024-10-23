@@ -10,17 +10,22 @@ import { NitroModules } from 'react-native-nitro-modules';
 import NativeView, { NativeProps } from './MapboxNavigationViewNativeComponent';
 import { MapboxNavigationViewManager } from './MapboxNavigationViewManager.nitro';
 import type { MapboxNavigationViewManagerRegistry } from './MapboxNavigationViewManagerRegistry.nitro';
+import { NativeSyntheticEvent } from 'react-native';
 
 const MapboxNavigationViewManagerRegistry =
   NitroModules.createHybridObject<MapboxNavigationViewManagerRegistry>(
     'MapboxNavigationViewManagerRegistry'
   );
 
-export type MapboxNavigationViewProps = Omit<NativeProps, 'nitroId'>;
-
-export type MapboxNavigationViewRef = {
-  randomTestFunction(): Promise<void>;
+type ReplacedNativeProps = 'nitroId' | 'onNavigationCameraStateChange';
+export type MapboxNavigationViewProps = Omit<
+  NativeProps,
+  ReplacedNativeProps
+> & {
+  onNavigationCameraStateChange?: (cameraState: string) => void;
 };
+
+export type MapboxNavigationViewRef = {};
 
 let nitroIdCounter = 0;
 export const MapboxNavigationView = forwardRef<
@@ -38,13 +43,22 @@ export const MapboxNavigationView = forwardRef<
     }, 100);
   }, [nitroId]);
 
-  const randomTestFunction = async () => {
-    await nitroViewManager.current?.randomTestFunction();
+  useImperativeHandle(ref, () => ({}));
+
+  const _onNavigationCameraStateChange = (
+    e: NativeSyntheticEvent<{ payload: string }>
+  ) => {
+    if (props.onNavigationCameraStateChange) {
+      const cameraState = e.nativeEvent.payload;
+      props.onNavigationCameraStateChange(cameraState);
+    }
   };
 
-  useImperativeHandle(ref, () => ({
-    randomTestFunction,
-  }));
-
-  return <NativeView nitroId={nitroId} {...props} />;
+  return (
+    <NativeView
+      nitroId={nitroId}
+      {...props}
+      onNavigationCameraStateChange={_onNavigationCameraStateChange}
+    />
+  );
 });

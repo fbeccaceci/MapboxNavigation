@@ -15,6 +15,7 @@ class MapboxNavigationContentRegistry: NSObject {
 }
 
 class HybridMapboxNavigationViewManager: NitroViewManager<MapboxNavigationViewContent>, HybridMapboxNavigationViewManagerSpec {
+    
   
   init(withNitroId viewNitroId: Double) {
     super.init(viewNitroId: viewNitroId) { nitroId in

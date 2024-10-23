@@ -12,7 +12,7 @@
 
 using namespace facebook::react;
 
-@interface MapboxNavigationView () <RCTMapboxNavigationViewViewProtocol>
+@interface MapboxNavigationView () <RCTMapboxNavigationViewViewProtocol, MapboxNavigationViewContentDelegate>
 
 @end
 
@@ -34,11 +34,22 @@ using namespace facebook::react;
     NSLog(@"Running on: %@", [NSThread isMainThread] ? @"Main Thread" : @"Background Thread");
 
     _view = [[MapboxNavigationViewContent alloc] init];
+    _view.delegate = self;
     
     self.contentView = _view;
   }
   
   return self;
+}
+
+- (std::shared_ptr<const MapboxNavigationViewEventEmitter>)getEventEmitter
+{
+  if (!self->_eventEmitter) {
+    return nullptr;
+  }
+  
+  assert(std::dynamic_pointer_cast<MapboxNavigationViewEventEmitter const>(self->_eventEmitter));
+  return std::static_pointer_cast<MapboxNavigationViewEventEmitter const>(self->_eventEmitter);
 }
 
 - (void)updateProps:(Props::Shared const &)props oldProps:(Props::Shared const &)oldProps
@@ -93,6 +104,16 @@ Class<RCTComponentViewProtocol> MapboxNavigationViewCls(void)
 {
   return MapboxNavigationView.class;
 }
+
+- (void)mapboxNavigationViewContent:(MapboxNavigationViewContent * _Nonnull)mapboxNavigationView didUpdateNavigationCameraState:(NSString * _Nonnull)navigationCameraState {
+  const auto eventEmitter = [self getEventEmitter];
+  if (eventEmitter) {
+    eventEmitter->onNavigationCameraStateChange(MapboxNavigationViewEventEmitter::OnNavigationCameraStateChange{
+      .payload = [navigationCameraState cStringUsingEncoding:NSUTF8StringEncoding]
+    });
+  }
+}
+
 
 @end
 #endif

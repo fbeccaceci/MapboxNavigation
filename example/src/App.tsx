@@ -23,6 +23,7 @@ export default function App() {
           style={styles.map}
           styleUrl="mapbox://styles/mapbox/outdoors-v12"
           puckType="2d"
+          onNavigationCameraStateChange={console.log}
         />
 
         <View style={styles.overlay}>

@@ -17,7 +17,9 @@ class MapboxNavigationViewEventEmitter : public ViewEventEmitter {
  public:
   using ViewEventEmitter::ViewEventEmitter;
 
-  
-  
+  struct OnNavigationCameraStateChange {
+      std::string payload;
+    };
+  void onNavigationCameraStateChange(OnNavigationCameraStateChange value) const;
 };
 } // namespace facebook::react

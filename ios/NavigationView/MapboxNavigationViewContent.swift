@@ -11,7 +11,13 @@ import MapboxMaps
 import Combine
 import CoreLocation
 
+@objc public protocol MapboxNavigationViewContentDelegate {
+  func mapboxNavigationViewContent(_ mapboxNavigationView: MapboxNavigationViewContent, didUpdateNavigationCameraState navigationCameraState: String)
+}
+
 @objc public class MapboxNavigationViewContent: UIView {
+  
+  @objc public var delegate: MapboxNavigationViewContentDelegate?
   
   private let navigationMapView = NavigationMapView(location: PassthroughSubject().eraseToAnyPublisher(),
                                                     routeProgress: PassthroughSubject().eraseToAnyPublisher())
@@ -24,6 +30,8 @@ import CoreLocation
   
     return provider
   }()
+  
+  private var cancellables = Set<AnyCancelable>()
 
   public override init(frame: CGRect) {
     super.init(frame: frame)
@@ -48,6 +56,12 @@ import CoreLocation
       navigationMapView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
       navigationMapView.leftAnchor.constraint(equalTo: self.leftAnchor)
     ])
+    
+    navigationMapView.mapView.mapboxMap.onCameraChanged.observe { [weak self] event in
+      guard let self = self else { return }
+      
+      self.delegate?.mapboxNavigationViewContent(self, didUpdateNavigationCameraState: "Hello event emitter")
+    }.store(in: &cancellables)
   }
   
   @objc public func setNitroId(_ nitroId: NSNumber) {

@@ -1,5 +1,8 @@
 import type { ViewProps } from 'react-native';
-import type { Double } from 'react-native/Libraries/Types/CodegenTypes';
+import type {
+  Double,
+  DirectEventHandler,
+} from 'react-native/Libraries/Types/CodegenTypes';
 import codegenNativeComponent from 'react-native/Libraries/Utilities/codegenNativeComponent';
 
 type EdgeInsets = {
@@ -20,6 +23,8 @@ export interface NativeProps extends ViewProps {
   puckType?: string;
   viewportPadding?: EdgeInsets;
   logoMargin?: Point;
+
+  onNavigationCameraStateChange?: DirectEventHandler<{ payload: string }>;
 }
 
 export default codegenNativeComponent<NativeProps>('MapboxNavigationView');
