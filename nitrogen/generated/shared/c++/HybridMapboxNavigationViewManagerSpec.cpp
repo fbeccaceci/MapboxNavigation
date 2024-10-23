@@ -14,7 +14,7 @@ namespace margelo::nitro::iplastudio::mapboxnavigation {
     HybridObject::loadHybridMethods();
     // load custom methods/properties
     registerHybrids(this, [](Prototype& prototype) {
-      prototype.registerHybridMethod("randomTestFunction", &HybridMapboxNavigationViewManagerSpec::randomTestFunction);
+      
     });
   }
 

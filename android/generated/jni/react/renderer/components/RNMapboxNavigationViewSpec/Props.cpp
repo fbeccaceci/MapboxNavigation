@@ -21,7 +21,9 @@ MapboxNavigationViewProps::MapboxNavigationViewProps(
 
     nitroId(convertRawProp(context, rawProps, "nitroId", sourceProps.nitroId, {0.0})),
     styleUrl(convertRawProp(context, rawProps, "styleUrl", sourceProps.styleUrl, {})),
-    puckType(convertRawProp(context, rawProps, "puckType", sourceProps.puckType, {}))
+    puckType(convertRawProp(context, rawProps, "puckType", sourceProps.puckType, {})),
+    viewportPadding(convertRawProp(context, rawProps, "viewportPadding", sourceProps.viewportPadding, {})),
+    logoMargin(convertRawProp(context, rawProps, "logoMargin", sourceProps.logoMargin, {}))
       {}
 
 } // namespace facebook::react

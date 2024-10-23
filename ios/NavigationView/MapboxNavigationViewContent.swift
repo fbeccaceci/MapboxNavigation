@@ -72,12 +72,12 @@ import CoreLocation
     }
   }
   
-  func randomTestFunction(completion: AnimationCompletion?) {
-    let camera = self.navigationMapView.mapView.camera
-    
-    let cameraOptions = CameraOptions(center: .init(latitude: 10, longitude: 10))
-    
-    camera?.ease(to: cameraOptions, duration: 1, completion: completion)
+  @objc public func setViewportPadding(_ viewportPadding: UIEdgeInsets) {
+    self.navigationMapView.viewportPadding = viewportPadding
+  }
+  
+  @objc public func setLogoMargin(_ logoMargin: CGPoint) {
+    self.navigationMapView.mapView.ornaments.options.logo.margins = logoMargin
   }
   
 }

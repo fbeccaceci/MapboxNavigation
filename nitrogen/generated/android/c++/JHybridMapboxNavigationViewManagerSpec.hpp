@@ -45,7 +45,7 @@ namespace margelo::nitro::iplastudio::mapboxnavigation {
 
   public:
     // Methods
-    std::future<void> randomTestFunction() override;
+    
 
   private:
     friend HybridBase;

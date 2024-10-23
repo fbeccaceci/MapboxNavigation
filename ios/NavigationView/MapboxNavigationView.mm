@@ -61,6 +61,26 @@ using namespace facebook::react;
     [self->_view setPuckType: nsString];
   }
   
+  UIEdgeInsets oldViewportPadding = UIEdgeInsetsMake(oldViewProps.viewportPadding.top,
+                                                     oldViewProps.viewportPadding.left,
+                                                     oldViewProps.viewportPadding.bottom,
+                                                     oldViewProps.viewportPadding.right);
+  
+  UIEdgeInsets newViewportPadding = UIEdgeInsetsMake(newViewProps.viewportPadding.top,
+                                                   newViewProps.viewportPadding.left,
+                                                   newViewProps.viewportPadding.bottom,
+                                                  newViewProps.viewportPadding.right);
+  if (!UIEdgeInsetsEqualToEdgeInsets(newViewportPadding, oldViewportPadding)) {
+    [self->_view setViewportPadding: newViewportPadding];
+  }
+  
+  
+  CGPoint oldLogoMargin = CGPointMake(oldViewProps.logoMargin.x, oldViewProps.logoMargin.y);
+  CGPoint newLogoMargin = CGPointMake(newViewProps.logoMargin.y, newViewProps.logoMargin.y);
+  if (!CGPointEqualToPoint(oldLogoMargin, newLogoMargin)) {
+    [self->_view setLogoMargin: newLogoMargin];
+  }
+  
   [super updateProps:props oldProps:oldProps];
 }
 

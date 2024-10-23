@@ -16,7 +16,6 @@ namespace margelo::nitro::iplastudio::mapboxnavigation { class HybridMapboxNavig
 // Include C++ defined types
 #include "HybridMapboxNavigationViewManagerRegistrySpec.hpp"
 #include "HybridMapboxNavigationViewManagerSpec.hpp"
-#include <future>
 #include <memory>
 
 // C++ helpers for Swift

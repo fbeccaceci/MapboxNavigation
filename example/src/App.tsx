@@ -9,10 +9,6 @@ import { request, PERMISSIONS } from 'react-native-permissions';
 export default function App() {
   const mapRef = useRef<MapboxNavigationViewRef>(null);
 
-  const doStuff = () => {
-    mapRef.current?.randomTestFunction().then(() => console.log('Done'));
-  };
-
   const requestPermission = () => {
     request(PERMISSIONS.IOS.LOCATION_ALWAYS).then((status) => {
       console.log('JS result: ' + status);
@@ -30,9 +26,6 @@ export default function App() {
         />
 
         <View style={styles.overlay}>
-          <TouchableOpacity style={styles.button} onPress={doStuff}>
-            <Text style={styles.buttonText}>Test nitro module</Text>
-          </TouchableOpacity>
           <TouchableOpacity style={styles.button} onPress={requestPermission}>
             <Text style={styles.buttonText}>Request location permission</Text>
           </TouchableOpacity>

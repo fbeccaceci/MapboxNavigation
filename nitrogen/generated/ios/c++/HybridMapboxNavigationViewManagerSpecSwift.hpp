@@ -14,8 +14,7 @@ namespace MapboxNavigation { class HybridMapboxNavigationViewManagerSpecCxx; }
 
 
 
-#include <future>
-#include <NitroModules/PromiseHolder.hpp>
+
 
 #if __has_include(<NitroModules/HybridContext.hpp>)
 #include <NitroModules/HybridContext.hpp>
@@ -60,10 +59,7 @@ namespace margelo::nitro::iplastudio::mapboxnavigation {
 
   public:
     // Methods
-    inline std::future<void> randomTestFunction() override {
-      auto __result = _swiftPart.randomTestFunction();
-      return __result.getFuture();
-    }
+    
 
   private:
     MapboxNavigation::HybridMapboxNavigationViewManagerSpecCxx _swiftPart;

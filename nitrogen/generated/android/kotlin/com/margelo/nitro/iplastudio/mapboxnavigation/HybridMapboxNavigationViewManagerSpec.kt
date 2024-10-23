@@ -41,9 +41,7 @@ abstract class HybridMapboxNavigationViewManagerSpec: HybridObject() {
   
 
   // Methods
-  @DoNotStrip
-  @Keep
-  abstract fun randomTestFunction(): Promise<Unit>
+  
 
   private external fun initHybrid(): HybridData
 

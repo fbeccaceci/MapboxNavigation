@@ -11,6 +11,7 @@ package com.facebook.react.viewmanagers;
 
 import android.view.View;
 import androidx.annotation.Nullable;
+import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.uimanager.BaseViewManagerDelegate;
 import com.facebook.react.uimanager.BaseViewManagerInterface;
 
@@ -29,6 +30,12 @@ public class MapboxNavigationViewManagerDelegate<T extends View, U extends BaseV
         break;
       case "puckType":
         mViewManager.setPuckType(view, value == null ? null : (String) value);
+        break;
+      case "viewportPadding":
+        mViewManager.setViewportPadding(view, (ReadableMap) value);
+        break;
+      case "logoMargin":
+        mViewManager.setLogoMargin(view, (ReadableMap) value);
         break;
       default:
         super.setProperty(view, propName, value);

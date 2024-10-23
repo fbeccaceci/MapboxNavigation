@@ -74,20 +74,5 @@ public class HybridMapboxNavigationViewManagerSpecCxx {
   
 
   // Methods
-  @inline(__always)
-  public func randomTestFunction() -> bridge.PromiseHolder_void_ {
-    do {
-      let result = try self.implementation.randomTestFunction()
-      return { () -> bridge.PromiseHolder_void_ in
-        let promiseHolder = bridge.create_PromiseHolder_void_()
-        result
-          .then({ __result in promiseHolder.resolve() })
-          .catch({ __error in promiseHolder.reject(std.string(String(describing: __error))) })
-        return promiseHolder
-      }()
-    } catch {
-      let message = "\(error.localizedDescription)"
-      fatalError("Swift errors can currently not be propagated to C++! See https://github.com/swiftlang/swift/issues/75290 (Error: \(message))")
-    }
-  }
+  
 }
