@@ -2,12 +2,25 @@ package com.margelo.nitro.com.mapboxnavigation
 
 import com.margelo.nitro.core.Promise
 
-class HybridMapboxNavigationViewManagerRegistry: HybridMapboxNavigationViewManagerSpec() {
+class HybridMapboxNavigationViewManagerRegistry: HybridMapboxNavigationViewManagerRegistrySpec() {
+
+  override val memorySize: Long
+    get() = 0L
+
+  override fun createViewManager(nitroId: Double): HybridMapboxNavigationViewManagerSpec {
+    return Test()
+  }
+
+}
+
+class Test() : HybridMapboxNavigationViewManagerSpec() {
 
   override val memorySize: Long
     get() = 0L
 
   override fun randomTestFunction(): Promise<Unit> {
-    TODO("Not yet implemented")
+    return Promise.async {
+      print("Hello async world")
+    }
   }
 }
