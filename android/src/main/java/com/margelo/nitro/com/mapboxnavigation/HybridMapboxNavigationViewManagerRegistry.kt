@@ -18,9 +18,4 @@ class Test() : HybridMapboxNavigationViewManagerSpec() {
   override val memorySize: Long
     get() = 0L
 
-  override fun randomTestFunction(): Promise<Unit> {
-    return Promise.async {
-      print("Hello async world")
-    }
-  }
 }

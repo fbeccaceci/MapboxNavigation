@@ -3,12 +3,18 @@ package com.mapboxnavigation
 import android.graphics.Color
 import com.facebook.react.module.annotations.ReactModule
 import com.facebook.react.bridge.ReactApplicationContext
+import com.facebook.react.bridge.ReadableMap
 import com.facebook.react.uimanager.ThemedReactContext
 import com.facebook.react.uimanager.annotations.ReactProp
 
 @ReactModule(name = MapboxNavigationViewManager.NAME)
 class MapboxNavigationViewManager :
   MapboxNavigationViewManagerSpec<MapboxNavigationView>() {
+
+  companion object {
+    const val NAME = "MapboxNavigationView"
+  }
+
   override fun getName(): String {
     return NAME
   }
@@ -23,10 +29,7 @@ class MapboxNavigationViewManager :
 //    view?.setBackgroundColor(Color.parseColor(color))
 //  }
 
-  companion object {
-    const val NAME = "MapboxNavigationView"
-  }
-
+  @ReactProp(name = "nitroId")
   override fun setNitroId(view: MapboxNavigationView?, value: Double) {
 //    TODO("Not yet implemented")
   }
@@ -36,6 +39,14 @@ class MapboxNavigationViewManager :
   }
 
   override fun setPuckType(view: MapboxNavigationView?, value: String?) {
+//    TODO("Not yet implemented")
+  }
+
+  override fun setViewportPadding(view: MapboxNavigationView?, value: ReadableMap?) {
+//    TODO("Not yet implemented")
+  }
+
+  override fun setLogoMargin(view: MapboxNavigationView?, value: ReadableMap?) {
 //    TODO("Not yet implemented")
   }
 }

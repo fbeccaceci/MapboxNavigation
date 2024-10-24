@@ -1,15 +1,23 @@
 package com.mapboxnavigation
 
 import android.content.Context
-import android.util.AttributeSet
-import android.view.View
+import android.widget.FrameLayout
+import com.mapbox.maps.MapView
 
-class MapboxNavigationView : View {
-  constructor(context: Context?) : super(context)
-  constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs)
-  constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : super(
-    context,
-    attrs,
-    defStyleAttr
-  )
+class MapboxNavigationView(context: Context) : FrameLayout(context) {
+
+  init {
+    // Create the child view
+    val childView = MapView(context)
+
+    // Create LayoutParams that will make the child fill the parent
+    val params = LayoutParams(
+      LayoutParams.MATCH_PARENT,
+      LayoutParams.MATCH_PARENT
+    )
+
+    // Add the view
+    addView(childView, params)
+  }
+
 }
