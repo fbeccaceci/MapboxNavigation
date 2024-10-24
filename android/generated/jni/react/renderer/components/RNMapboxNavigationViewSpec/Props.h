@@ -11,9 +11,63 @@
 
 #include <react/renderer/components/view/ViewProps.h>
 #include <react/renderer/core/PropsParserContext.h>
+#include <react/renderer/core/propsConversions.h>
 
 namespace facebook::react {
 
+struct MapboxNavigationViewViewportPaddingStruct {
+  double top{0.0};
+  double right{0.0};
+  double bottom{0.0};
+  double left{0.0};
+};
+
+static inline void fromRawValue(const PropsParserContext& context, const RawValue &value, MapboxNavigationViewViewportPaddingStruct &result) {
+  auto map = (std::unordered_map<std::string, RawValue>)value;
+
+  auto tmp_top = map.find("top");
+  if (tmp_top != map.end()) {
+    fromRawValue(context, tmp_top->second, result.top);
+  }
+  auto tmp_right = map.find("right");
+  if (tmp_right != map.end()) {
+    fromRawValue(context, tmp_right->second, result.right);
+  }
+  auto tmp_bottom = map.find("bottom");
+  if (tmp_bottom != map.end()) {
+    fromRawValue(context, tmp_bottom->second, result.bottom);
+  }
+  auto tmp_left = map.find("left");
+  if (tmp_left != map.end()) {
+    fromRawValue(context, tmp_left->second, result.left);
+  }
+}
+
+static inline std::string toString(const MapboxNavigationViewViewportPaddingStruct &value) {
+  return "[Object MapboxNavigationViewViewportPaddingStruct]";
+}
+
+struct MapboxNavigationViewLogoMarginStruct {
+  double x{0.0};
+  double y{0.0};
+};
+
+static inline void fromRawValue(const PropsParserContext& context, const RawValue &value, MapboxNavigationViewLogoMarginStruct &result) {
+  auto map = (std::unordered_map<std::string, RawValue>)value;
+
+  auto tmp_x = map.find("x");
+  if (tmp_x != map.end()) {
+    fromRawValue(context, tmp_x->second, result.x);
+  }
+  auto tmp_y = map.find("y");
+  if (tmp_y != map.end()) {
+    fromRawValue(context, tmp_y->second, result.y);
+  }
+}
+
+static inline std::string toString(const MapboxNavigationViewLogoMarginStruct &value) {
+  return "[Object MapboxNavigationViewLogoMarginStruct]";
+}
 class MapboxNavigationViewProps final : public ViewProps {
  public:
   MapboxNavigationViewProps() = default;
@@ -24,6 +78,8 @@ class MapboxNavigationViewProps final : public ViewProps {
   double nitroId{0.0};
   std::string styleUrl{};
   std::string puckType{};
+  MapboxNavigationViewViewportPaddingStruct viewportPadding{};
+  MapboxNavigationViewLogoMarginStruct logoMargin{};
 };
 
 } // namespace facebook::react

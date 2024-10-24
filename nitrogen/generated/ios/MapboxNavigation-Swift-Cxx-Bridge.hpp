@@ -11,12 +11,7 @@
 
 
 // Include C++ defined types
-#if __has_include(<NitroModules/PromiseHolder.hpp>)
- #include <NitroModules/PromiseHolder.hpp>
-#endif
-#if __has_include(<future>)
- #include <future>
-#endif
+
 
 /**
  * Contains specialized versions of C++ templated types so they can be accessed from Swift,
@@ -24,12 +19,6 @@
  */
 namespace margelo::nitro::com::mapboxnavigation::bridge::swift {
 
-  /**
-   * Specialized version of `PromiseHolder<void>`.
-   */
-  using PromiseHolder_void_ = PromiseHolder<void>;
-  inline PromiseHolder<void> create_PromiseHolder_void_() {
-    return PromiseHolder<void>();
-  }
+  
 
 } // namespace margelo::nitro::com::mapboxnavigation::bridge::swift

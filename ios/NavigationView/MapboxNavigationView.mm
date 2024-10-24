@@ -12,7 +12,7 @@
 
 using namespace facebook::react;
 
-@interface MapboxNavigationView () <RCTMapboxNavigationViewViewProtocol>
+@interface MapboxNavigationView () <RCTMapboxNavigationViewViewProtocol, MapboxNavigationViewContentDelegate>
 
 @end
 
@@ -34,11 +34,22 @@ using namespace facebook::react;
     NSLog(@"Running on: %@", [NSThread isMainThread] ? @"Main Thread" : @"Background Thread");
 
     _view = [[MapboxNavigationViewContent alloc] init];
+    _view.delegate = self;
     
     self.contentView = _view;
   }
   
   return self;
+}
+
+- (std::shared_ptr<const MapboxNavigationViewEventEmitter>)getEventEmitter
+{
+  if (!self->_eventEmitter) {
+    return nullptr;
+  }
+  
+  assert(std::dynamic_pointer_cast<MapboxNavigationViewEventEmitter const>(self->_eventEmitter));
+  return std::static_pointer_cast<MapboxNavigationViewEventEmitter const>(self->_eventEmitter);
 }
 
 - (void)updateProps:(Props::Shared const &)props oldProps:(Props::Shared const &)oldProps
@@ -61,6 +72,26 @@ using namespace facebook::react;
     [self->_view setPuckType: nsString];
   }
   
+  UIEdgeInsets oldViewportPadding = UIEdgeInsetsMake(oldViewProps.viewportPadding.top,
+                                                     oldViewProps.viewportPadding.left,
+                                                     oldViewProps.viewportPadding.bottom,
+                                                     oldViewProps.viewportPadding.right);
+  
+  UIEdgeInsets newViewportPadding = UIEdgeInsetsMake(newViewProps.viewportPadding.top,
+                                                   newViewProps.viewportPadding.left,
+                                                   newViewProps.viewportPadding.bottom,
+                                                  newViewProps.viewportPadding.right);
+  if (!UIEdgeInsetsEqualToEdgeInsets(newViewportPadding, oldViewportPadding)) {
+    [self->_view setViewportPadding: newViewportPadding];
+  }
+  
+  
+  CGPoint oldLogoMargin = CGPointMake(oldViewProps.logoMargin.x, oldViewProps.logoMargin.y);
+  CGPoint newLogoMargin = CGPointMake(newViewProps.logoMargin.y, newViewProps.logoMargin.y);
+  if (!CGPointEqualToPoint(oldLogoMargin, newLogoMargin)) {
+    [self->_view setLogoMargin: newLogoMargin];
+  }
+  
   [super updateProps:props oldProps:oldProps];
 }
 
@@ -73,6 +104,16 @@ Class<RCTComponentViewProtocol> MapboxNavigationViewCls(void)
 {
   return MapboxNavigationView.class;
 }
+
+- (void)mapboxNavigationViewContent:(MapboxNavigationViewContent * _Nonnull)mapboxNavigationView didUpdateNavigationCameraState:(NSString * _Nonnull)navigationCameraState {
+  const auto eventEmitter = [self getEventEmitter];
+  if (eventEmitter) {
+    eventEmitter->onNavigationCameraStateChange(MapboxNavigationViewEventEmitter::OnNavigationCameraStateChange{
+      .payload = [navigationCameraState cStringUsingEncoding:NSUTF8StringEncoding]
+    });
+  }
+}
+
 
 @end
 #endif

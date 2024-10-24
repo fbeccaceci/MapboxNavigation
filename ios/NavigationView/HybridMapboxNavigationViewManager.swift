@@ -15,6 +15,7 @@ class MapboxNavigationContentRegistry: NSObject {
 }
 
 class HybridMapboxNavigationViewManager: NitroViewManager<MapboxNavigationViewContent>, HybridMapboxNavigationViewManagerSpec {
+    
   
   init(withNitroId viewNitroId: Double) {
     super.init(viewNitroId: viewNitroId) { nitroId in
@@ -28,16 +29,16 @@ class HybridMapboxNavigationViewManager: NitroViewManager<MapboxNavigationViewCo
     return getSizeOf(self)
   }
   
-  func randomTestFunction() throws -> NitroModules.Promise<Void> {
-    let promise = Promise<Void>()
-    
-    DispatchQueue.main.async {
-      self.view.randomTestFunction { _ in
-        promise.resolve(withResult: ())
-      }
-    }
-    
-    return promise
-  }
+//  func randomTestFunction() throws -> NitroModules.Promise<Void> {
+//    let promise = Promise<Void>()
+//    
+//    DispatchQueue.main.async {
+//      self.view.randomTestFunction { _ in
+//        promise.resolve(withResult: ())
+//      }
+//    }
+//    
+//    return promise
+//  }
   
 }

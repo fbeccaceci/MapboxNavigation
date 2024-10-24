@@ -13,4 +13,12 @@
 
 namespace facebook::react {
 
+void MapboxNavigationViewEventEmitter::onNavigationCameraStateChange(OnNavigationCameraStateChange $event) const {
+  dispatchEvent("navigationCameraStateChange", [$event=std::move($event)](jsi::Runtime &runtime) {
+    auto $payload = jsi::Object(runtime);
+    $payload.setProperty(runtime, "payload", $event.payload);
+    return $payload;
+  });
+}
+
 } // namespace facebook::react

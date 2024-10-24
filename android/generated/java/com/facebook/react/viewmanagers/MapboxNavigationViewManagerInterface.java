@@ -11,9 +11,12 @@ package com.facebook.react.viewmanagers;
 
 import android.view.View;
 import androidx.annotation.Nullable;
+import com.facebook.react.bridge.ReadableMap;
 
 public interface MapboxNavigationViewManagerInterface<T extends View> {
   void setNitroId(T view, double value);
   void setStyleUrl(T view, @Nullable String value);
   void setPuckType(T view, @Nullable String value);
+  void setViewportPadding(T view, @Nullable ReadableMap value);
+  void setLogoMargin(T view, @Nullable ReadableMap value);
 }

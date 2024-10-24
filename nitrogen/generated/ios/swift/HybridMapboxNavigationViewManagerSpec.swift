@@ -32,7 +32,7 @@ public protocol HybridMapboxNavigationViewManagerSpec: AnyObject, HybridObjectSp
   
 
   // Methods
-  func randomTestFunction() throws -> Promise<Void>
+  
 }
 
 public extension HybridMapboxNavigationViewManagerSpec {

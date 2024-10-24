@@ -15,7 +15,7 @@
 
 
 
-#include <future>
+
 
 namespace margelo::nitro::com::mapboxnavigation {
 
@@ -48,7 +48,7 @@ namespace margelo::nitro::com::mapboxnavigation {
 
     public:
       // Methods
-      virtual std::future<void> randomTestFunction() = 0;
+      
 
     protected:
       // Hybrid Setup
